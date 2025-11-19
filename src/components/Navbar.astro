@@ -1,0 +1,42 @@
+---
+import type { NavLink } from "../types";
+
+const links: NavLink[] = [
+  { name: "Catalog", href: "/" },
+  { name: "Artists", href: "/artists" },
+  { name: "Sell Your Art", href: "/dashboard/add-product" },
+];
+---
+
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <a href="/" class="text-2xl font-serif font-bold text-amber-700">
+        The Artisan's Corner
+      </a>
+
+      <div class="hidden md:flex space-x-8 items-center">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="text-gray-600 hover:text-amber-700 transition-colors font-medium"
+            >
+              {link.name}
+            </a>
+          ))
+        }
+        <a
+          href="/cart"
+          class="bg-amber-700 text-white px-4 py-2 rounded-md hover:bg-amber-800 transition-colors flex items-center gap-2"
+        >
+          <span>Cart</span>
+          <span
+            class="bg-amber-900 text-xs py-0.5 px-1.5 rounded-full"
+            id="cart-count">0</span
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

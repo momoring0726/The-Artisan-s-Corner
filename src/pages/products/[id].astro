@@ -1,0 +1,77 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import type { Product } from "../../types";
+
+export const getStaticPaths = (() => {
+  // In a real app, you would fetch this list from your database
+  const paths = [
+    { params: { id: "1" } },
+    { params: { id: "2" } },
+    { params: { id: "3" } },
+    { params: { id: "4" } },
+    { params: { id: "5" } },
+    { params: { id: "6" } },
+  ];
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { id } = Astro.params;
+
+// Mock Data Retrieval with explicit typing
+const product: Product = {
+  id: id || "1", // Fallback for strict null checks if params are loose
+  title: "Hand-thrown Ceramic Mug",
+  price: 28.0,
+  description:
+    "This beautiful mug was wheel-thrown using speckled stoneware clay...",
+  artist: "Jane Doe",
+  image: "https://placehold.co/600x600/e2e8f0/475569?text=Product+Detail+View",
+  inventory: 5,
+  category: "Pottery",
+};
+---
+
+<Layout title={product.title}>
+  <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-sm overflow-hidden">
+    <div class="grid md:grid-cols-2">
+      <div class="bg-gray-100 p-8 flex items-center justify-center">
+        <img
+          src={product.image}
+          alt={product.title}
+          class="rounded-lg shadow-lg max-w-full h-auto"
+        />
+      </div>
+      <div class="p-8 md:p-12 flex flex-col justify-center">
+        <div class="mb-4">
+          <a
+            href="/artists"
+            class="text-sm font-medium text-amber-600 hover:underline mb-1 inline-block"
+            >{product.artist}</a
+          >
+          <h1 class="text-3xl font-serif font-bold text-gray-900">
+            {product.title}
+          </h1>
+        </div>
+        <p class="text-gray-600 leading-relaxed mb-8">{product.description}</p>
+        <div class="border-t border-b border-gray-100 py-6 mb-8">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-3xl font-bold text-gray-900"
+              >${product.price.toFixed(2)}</span
+            >
+            <span
+              class="text-sm text-green-600 font-medium bg-green-50 px-3 py-1 rounded-full"
+            >
+              {product.inventory} in stock
+            </span>
+          </div>
+        </div>
+        <button
+          class="w-full bg-amber-700 hover:bg-amber-800 text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-sm"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</Layout>

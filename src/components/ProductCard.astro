@@ -1,0 +1,39 @@
+---
+import type { Product } from "../types";
+
+// Extend the Product type or Pick specific fields to ensure strict matching
+interface Props
+  extends Pick<
+    Product,
+    "id" | "title" | "price" | "image" | "artist" | "category"
+  > {}
+
+const { id, title, price, image, artist, category } = Astro.props;
+---
+
+<div
+  class="group bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100"
+>
+  <a href={`/products/${id}`}>
+    <div class="aspect-square overflow-hidden bg-gray-100">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+    <div class="p-4">
+      <span
+        class="text-xs text-amber-600 font-semibold uppercase tracking-wider"
+        >{category}</span
+      >
+      <h3 class="text-lg font-medium text-gray-900 mt-1 truncate">{title}</h3>
+      <p class="text-sm text-gray-500 mb-3">by {artist}</p>
+      <div
+        class="flex items-center justify-between text-lg font-bold text-gray-900"
+      >
+        ${price.toFixed(2)}
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,16 +1,104 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import type { Product, ProductCategory } from "../types";
 
+const products: Product[] = [
+  {
+    id: "1",
+    title: "Hand-thrown Ceramic Mug",
+    price: 28.0,
+    image: "https://placehold.co/400x400/e2e8f0/475569?text=Ceramic+Mug",
+    artist: "Jane Doe",
+    category: "Pottery",
+  },
+  {
+    id: "2",
+    title: "Abstract Oil Painting",
+    price: 150.0,
+    image: "https://placehold.co/400x400/e2e8f0/475569?text=Oil+Painting",
+    artist: "John Smith",
+    category: "Art",
+  },
+  {
+    id: "3",
+    title: "Woven Wool Tapestry",
+    price: 85.0,
+    image: "https://placehold.co/400x400/e2e8f0/475569?text=Tapestry",
+    artist: "Sarah Connor",
+    category: "Decor",
+  },
+  {
+    id: "4",
+    title: "Silver Fern Ring",
+    price: 45.0,
+    image: "https://placehold.co/400x400/e2e8f0/475569?text=Silver+Ring",
+    artist: "Jane Doe",
+    category: "Jewelry",
+  },
+  {
+    id: "5",
+    title: "Oak Cutting Board",
+    price: 60.0,
+    image: "https://placehold.co/400x400/e2e8f0/475569?text=Cutting+Board",
+    artist: "Mike Ross",
+    category: "Woodwork",
+  },
+  {
+    id: "6",
+    title: "Minimalist Vase",
+    price: 32.0,
+    image: "https://placehold.co/400x400/e2e8f0/475569?text=Vase",
+    artist: "Jane Doe",
+    category: "Pottery",
+  },
+];
+
+const categories: ProductCategory[] = [
+  "All",
+  "Pottery",
+  "Jewelry",
+  "Art",
+  "Decor",
+  "Woodwork",
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Catalog">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <h1 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+      Curated Handmade Goods
+    </h1>
+    <p class="text-lg text-gray-600">
+      Discover unique items crafted with passion by independent artists.
+    </p>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-8">
+    <aside class="w-full md:w-64 flex-shrink-0">
+      <div class="sticky top-24">
+        <h3 class="font-bold text-gray-900 mb-4">Categories</h3>
+        <ul class="space-y-2">
+          {
+            categories.map((cat) => (
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-amber-700 block py-1"
+                >
+                  {cat}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </aside>
+
+    <div class="flex-1">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {products.map((product) => <ProductCard {...product} />)}
+      </div>
+    </div>
+  </div>
+</Layout>
