@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArtistCard from "../../components/ArtistCard.astro";
+import type { Artist } from "../../types";
+
+// Mock Data for Artists
+const artists: Artist[] = [
+  {
+    id: "jane-doe",
+    name: "Jane Doe",
+    location: "Portland, OR",
+    bio: "Ceramic artist inspired by the misty forests of the Pacific Northwest. Specializing in functional stoneware.",
+    image: "https://placehold.co/200x200/3b82f6/ffffff?text=JD",
+    products: [], // Products aren't needed for the card view
+  },
+  {
+    id: "john-smith",
+    name: "John Smith",
+    location: "Austin, TX",
+    bio: "Abstract expressionist painter capturing the vibrancy of city life through bold colors and textures.",
+    image: "https://placehold.co/200x200/ef4444/ffffff?text=JS",
+    products: [],
+  },
+  {
+    id: "sarah-connor",
+    name: "Sarah Connor",
+    location: "Denver, CO",
+    bio: "Textile artist weaving modern tapestries using traditional looming techniques and sustainable wool.",
+    image: "https://placehold.co/200x200/10b981/ffffff?text=SC",
+    products: [],
+  },
+];
+---
+
+<Layout title="Our Artists">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <h1 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+      Meet the Artisans
+    </h1>
+    <p class="text-lg text-gray-600">
+      The talented hands and creative minds behind our curated collection.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {artists.map((artist) => <ArtistCard {...artist} />)}
+  </div>
+</Layout>

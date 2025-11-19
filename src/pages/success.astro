@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Order Confirmed">
+  <div class="max-w-2xl mx-auto text-center py-16">
+    <div
+      class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-10 w-10 text-green-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+
+    <h1 class="text-4xl font-serif font-bold text-gray-900 mb-4">
+      Order Confirmed!
+    </h1>
+    <p class="text-lg text-gray-600 mb-8">
+      Thank you for supporting independent artists. We've sent a confirmation
+      email to <strong>jane@example.com</strong>.
+    </p>
+
+    <div
+      class="bg-gray-50 rounded-xl p-6 max-w-md mx-auto mb-10 border border-gray-200 text-left"
+    >
+      <p class="text-sm text-gray-500 uppercase tracking-wider font-bold mb-4">
+        Order Details
+      </p>
+      <div class="flex justify-between mb-2">
+        <span class="text-gray-900">Order Number</span>
+        <span class="font-mono text-gray-600">#ORD-7829</span>
+      </div>
+      <div class="flex justify-between mb-2">
+        <span class="text-gray-900">Date</span>
+        <span class="text-gray-600">Oct 24, 2023</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-gray-900">Total Amount</span>
+        <span class="font-bold text-gray-900">$33.00</span>
+      </div>
+    </div>
+
+    <a
+      href="/"
+      class="inline-block bg-amber-700 text-white px-8 py-3 rounded-lg hover:bg-amber-800 transition-colors font-medium shadow-sm"
+    >
+      Continue Shopping
+    </a>
+  </div>
+</Layout>

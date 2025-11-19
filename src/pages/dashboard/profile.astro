@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const artistProfile = {
+  firstName: "Jane",
+  lastName: "Doe",
+  email: "jane@example.com",
+  location: "Portland, OR",
+  bio: "I am a ceramic artist inspired by the misty forests of the Pacific Northwest...",
+  image: "https://placehold.co/200x200/3b82f6/ffffff?text=JD",
+};
+---
+
+<Layout title="Edit Profile">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-serif font-bold text-gray-900 mb-8">
+      Profile Settings
+    </h1>
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+      <form class="space-y-6">
+        <div class="flex items-center gap-6 mb-8">
+          <img
+            src={artistProfile.image}
+            alt="Profile"
+            class="w-24 h-24 rounded-full object-cover ring-4 ring-gray-50"
+          />
+          <div>
+            <h3 class="font-medium text-gray-900">Profile Picture</h3>
+            <p class="text-sm text-gray-500 mb-3">
+              JPG, GIF or PNG. Max size of 800K
+            </p>
+            <button
+              type="button"
+              class="text-sm font-medium text-amber-700 hover:text-amber-800 bg-amber-50 px-3 py-1.5 rounded-md transition-colors"
+            >
+              Change Picture
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >First Name</label
+            >
+            <input
+              type="text"
+              value={artistProfile.firstName}
+              class="w-full border border-gray-300 rounded-lg px-3 py-2"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Last Name</label
+            >
+            <input
+              type="text"
+              value={artistProfile.lastName}
+              class="w-full border border-gray-300 rounded-lg px-3 py-2"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1"
+            >Location</label
+          >
+          <input
+            type="text"
+            value={artistProfile.location}
+            class="w-full border border-gray-300 rounded-lg px-3 py-2"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Bio</label
+          >
+          <textarea
+            rows="4"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2"
+            >{artistProfile.bio}</textarea
+          >
+          <p class="text-xs text-gray-500 mt-1">
+            Brief description for your artist card.
+          </p>
+        </div>
+
+        <div class="pt-4 flex justify-end">
+          <button
+            type="submit"
+            class="bg-gray-900 text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-medium"
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</Layout>
